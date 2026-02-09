@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We tax filing - Complete Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1c1c1c;
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #25D366;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1c1c1c;
+            padding: 15px 0;
+        }
+
+        .logo span {
+            color: #228B22;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1c1c1c;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #228B22;
+        }
+
+        .login-btn {
+            background-color: #228B22;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        .login-btn:hover {
+            background-color: #1c5a1c;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #1ea952;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #1c1c1c;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            color: #1c1c1c;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card .badge {
+            background-color: #228B22;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 40px 20px;
+            background-color: #f5f5f5;
+            min-height: calc(100vh - 200px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .form-section, .list-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #1c1c1c;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #667eea;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .client-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .client-table thead {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .client-table th,
+        .client-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .client-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .client-table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 60px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn {
+            background-color: #228B22;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #1c5a1c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #25D366;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #25D366;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ea952;
+            transform: scale(1.1);
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1c1c1c;
+        }
+
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price span {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .pricing-card ul li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .client-table {
+                font-size: 12px;
+            }
+
+            .client-table th,
+            .client-table td {
+                padding: 8px;
+            }
+
+            .mobile-menu {
+                display: block !important;
+                cursor: pointer;
+                font-size: 24px;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +1 (555) 123-4567</span>
+                <span>📧 support@wetaxfiling.com</span>
+            </div>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">We <span>tax filing</span></div>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
+            <ul id="mainMenu">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('about')">About Us</a></li>
+                <li><a onclick="showPage('services')">Services</a></li>
+                <li><a onclick="showPage('pricing')">Pricing</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+                <li><a onclick="showLogin()" class="login-btn">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Professional Tax Filing Services</h1>
+            <p>Expert U.S. Tax & Accounting Solutions for Individuals and Businesses</p>
+            <button class="cta-button" onclick="showPage('contact')">Get Free Consultation</button>
+        </section>
+
+        <!-- Services Preview -->
+        <section class="services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>Tax Planning</h3>
+                    <p>Strategic tax planning to minimize your tax liability and maximize your savings.</p>
+                </div>
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>Tax Return Evaluation</h3>
+                    <p>Comprehensive review of your tax returns to ensure accuracy and compliance.</p>
+                </div>
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>IRS Audit Representation</h3>
+                    <p>Professional representation and support during IRS audits and inquiries.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Individual Tax Returns</h3>
+                    <p>Complete preparation and filing of personal income tax returns.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Business Tax Returns</h3>
+                    <p>Expert handling of corporate, partnership, and LLC tax returns.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Bookkeeping Services</h3>
+                    <p>Professional bookkeeping and accounting for your business needs.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page-section">
+        <section class="about">
+            <h2 class="section-title">About We tax filing</h2>
+            <div class="about-content">
+                <p>With years of expertise in U.S. tax and accounting, We tax filing provides comprehensive tax solutions for individuals and businesses. Our commitment to accuracy, compliance, and client satisfaction sets us apart.</p>
+                <p>Our team of experienced tax professionals stays current with ever-changing tax laws to ensure you receive the best possible service and maximize your tax benefits.</p>
+                <p>We pride ourselves on offering personalized service, competitive pricing, and free value-added services to help our clients succeed financially.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="servicesPage" class="page-section">
+        <section class="services">
+            <h2 class="section-title">All Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>Tax Planning</h3>
+                    <p>Strategic tax planning to minimize your tax liability and maximize your savings throughout the year.</p>
+                </div>
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>Tax Return Evaluation</h3>
+                    <p>Comprehensive review of your tax returns to ensure accuracy and compliance with current tax laws.</p>
+                </div>
+                <div class="service-card">
+                    <span class="badge">FREE</span>
+                    <h3>IRS Audit Representation</h3>
+                    <p>Professional representation and support during IRS audits and inquiries to protect your interests.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Individual Tax Returns</h3>
+                    <p>Complete preparation and filing of personal income tax returns, including complex situations.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Business Tax Returns</h3>
+                    <p>Expert handling of corporate, partnership, and LLC tax returns with attention to detail.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Bookkeeping Services</h3>
+                    <p>Professional bookkeeping and accounting services to keep your business finances organized.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Payroll Processing</h3>
+                    <p>Efficient payroll management and tax compliance services for businesses of all sizes.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Tax Resolution</h3>
+                    <p>Help with back taxes, payment plans, and IRS negotiations to resolve tax issues.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Estate & Trust Tax</h3>
+                    <p>Specialized tax services for estates, trusts, and gift tax returns with expert guidance.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Pricing Page -->
+    <div id="pricingPage" class="page-section">
+        <section class="pricing">
+            <h2 class="section-title">Our Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Individual Returns</h3>
+                    <div class="price">$99<span>/return</span></div>
+                    <ul>
+                        <li>Form 1040</li>
+                        <li>W-2 Income</li>
+                        <li>Standard Deduction</li>
+                        <li>Free E-Filing</li>
+                        <li>Free Tax Planning</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPage('contact')">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Small Business</h3>
+                    <div class="price">$299<span>/return</span></div>
+                    <ul>
+                        <li>Schedule C/LLC Returns</li>
+                        <li>Bookkeeping Review</li>
+                        <li>Quarterly Estimates</li>
+                        <li>Free E-Filing</li>
+                        <li>Free Tax Planning</li>
+                        <li>IRS Audit Support</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPage('contact')">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Corporate Returns</h3>
+                    <div class="price">$599<span>/return</span></div>
+                    <ul>
+                        <li>1120/1065 Returns</li>
+                        <li>Full Bookkeeping</li>
+                        <li>Quarterly Estimates</li>
+                        <li>Payroll Processing</li>
+                        <li>Free Tax Planning</li>
+                        <li>IRS Audit Support</li>
+                        <li>Year-Round Support</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPage('contact')">Get Started</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contactPage" class="page-section">
+        <section class="contact-section">
+            <h2 class="section-title">Get a Free Consultation</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="success-message" id="contactSuccess"></div>
+                <div class="form-group">
+                    <label for="contactName">Full Name *</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email Address *</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number *</label>
+                    <input type="tel" id="contactPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Subject *</label>
+                    <input type="text" id="contactSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message *</label>
+                    <textarea id="contactMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page-section">
+        <section class="dashboard">
+            <div class="container">
+                <h2 class="section-title">Client Management Dashboard</h2>
+
+                <!-- Statistics -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Clients</h3>
+                        <div class="number" id="totalClients">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Clients</h3>
+                        <div class="number" id="activeClients">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Follow-ups</h3>
+                        <div class="number" id="pendingClients">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed This Month</h3>
+                        <div class="number" id="completedClients">0</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <!-- Form Section -->
+                    <div class="form-section">
+                        <h3 id="formTitle">Add New Client</h3>
+                        <div class="success-message" id="successMessage"></div>
+                        <div class="error-message" id="errorMessage"></div>
+
+                        <form id="clientForm">
+                            <input type="hidden" id="clientId">
+
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ssn">SSN (Last 4 digits)</label>
+                                <input type="text" id="ssn" maxlength="4" placeholder="XXXX">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceType">Service Type *</label>
+                                <select id="serviceType" required>
+                                    <option value="">Select Service</option>
+                                    <option value="Individual Tax Return">Individual Tax Return</option>
+                                    <option value="Business Tax Return">Business Tax Return</option>
+                                    <option value="Tax Planning">Tax Planning</option>
+                                    <option value="Bookkeeping">Bookkeeping</option>
+                                    <option value="Payroll">Payroll Processing</option>
+                                    <option value="Audit Representation">Audit Representation</option>
+                                    <option value="Tax Resolution">Tax Resolution</option>
+                                    <option value="Estate & Trust Tax">Estate & Trust Tax</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status *</label>
+                                <select id="status" required>
+                                    <option value="Active">Active</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea id="notes" rows="3" placeholder="Additional information..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Add Client</button>
+                            <button type="button" class="btn btn-secondary" id="cancelBtn" style="display:none; margin-top: 10px; width: 100%;">Cancel</button>
+                        </form>
+                    </div>
+
+                    <!-- List Section -->
+                    <div class="list-section">
+                        <h3>Client List</h3>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-success" onclick="exportToCSV()">Export to CSV</button>
+                            <button class="btn btn-danger" onclick="clearAllData()">Clear All Data</button>
+                        </div>
+
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search clients by name, email, or phone...">
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="client-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Service</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clientTableBody">
+                                    <tr>
+                                        <td colspan="6" class="no-data">No clients found. Add your first client using the form.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📍 123 Main Street, Suite 100</p>
+                <p>City, State 12345</p>
+                <p>📞 +1 (555) 123-4567</p>
+                <p>📧 support@wetaxfiling.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('about')">About Us</a>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a onclick="showPage('services')">Individual Tax Filing</a>
+                <a onclick="showPage('services')">Business Tax Returns</a>
+                <a onclick="showPage('services')">Tax Planning</a>
+                <a onclick="showPage('services')">IRS Representation</a>
+            </div>
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 We tax filing. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/15551234567" class="whatsapp-btn" target="_blank">💬</a>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Dashboard Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" value="admin123" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p style="margin-top: 15px; color: #666; font-size: 14px;">Default: admin / admin123</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(page) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.remove('active'));
+
+            const pageMap = {
+                'home': 'homePage',
+                'about': 'aboutPage',
+                'services': 'servicesPage',
+                'pricing': 'pricingPage',
+                'contact': 'contactPage',
+                'dashboard': 'dashboardPage'
+            };
+
+            document.getElementById(pageMap[page]).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Login Modal
+        function showLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === 'admin123') {
+                closeLogin();
+                showPage('dashboard');
+            } else {
+                alert('Invalid credentials! Use admin/admin123');
+            }
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target == modal) {
+                closeLogin();
+            }
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successEl = document.getElementById('contactSuccess');
+            successEl.textContent = 'Thank you! We will contact you soon.';
+            successEl.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                successEl.style.display = 'none';
+            }, 3000);
+        });
+
+        // Client Management System
+        let clients = JSON.parse(localStorage.getItem('wetaxfilingClients')) || [];
+        let editingId = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderClients();
+            updateStats();
+
+            document.getElementById('clientForm').addEventListener('submit', handleSubmit);
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('cancelBtn').addEventListener('click', resetForm);
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const client = {
+                id: editingId || Date.now(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                ssn: document.getElementById('ssn').value,
+                address: document.getElementById('address').value,
+                serviceType: document.getElementById('serviceType').value,
+                status: document.getElementById('status').value,
+                notes: document.getElementById('notes').value,
+                createdAt: editingId ? clients.find(c => c.id === editingId).createdAt : new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            if (editingId) {
+                const index = clients.findIndex(c => c.id === editingId);
+                clients[index] = client;
+                showMessage('success', 'Client updated successfully!');
+            } else {
+                clients.push(client);
+                showMessage('success', 'Client added successfully!');
+            }
+
+            localStorage.setItem('wetaxfilingClients', JSON.stringify(clients));
+
+            resetForm();
+            renderClients();
+            updateStats();
+        }
+
+        function renderClients(filteredClients = null) {
+            const clientsToRender = filteredClients || clients;
+            const tbody = document.getElementById('clientTableBody');
+
+            if (clientsToRender.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="no-data">No clients found.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = clientsToRender.map(client => `
+                <tr>
+                    <td>${client.fullName}</td>
+                    <td>${client.email}</td>
+                    <td>${client.phone}</td>
+                    <td>${client.serviceType}</td>
+                    <td><span style="padding: 4px 8px; border-radius: 3px; background-color: ${getStatusColor(client.status)}; color: white; font-size: 12px;">${client.status}</span></td>
+                    <td>
+                        <button class="btn btn-edit" onclick="editClient(${client.id})">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteClient(${client.id})">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function editClient(id) {
+            const client = clients.find(c => c.id === id);
+            if (!client) return;
+
+            editingId = id;
+
+            document.getElementById('fullName').value = client.fullName;
+            document.getElementById('email').value = client.email;
+            document.getElementById('phone').value = client.phone;
+            document.getElementById('ssn').value = client.ssn || '';
+            document.getElementById('address').value = client.address || '';
+            document.getElementById('serviceType').value = client.serviceType;
+            document.getElementById('status').value = client.status;
+            document.getElementById('notes').value = client.notes || '';
+
+            document.getElementById('formTitle').textContent = 'Edit Client';
+            document.getElementById('submitBtn').textContent = 'Update Client';
+            document.getElementById('cancelBtn').style.display = 'inline-block';
+
+            document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function deleteClient(id) {
+            if (!confirm('Are you sure you want to delete this client?')) return;
+
+            clients = clients.filter(c => c.id !== id);
+            localStorage.setItem('wetaxfilingClients', JSON.stringify(clients));
+
+            renderClients();
+            updateStats();
+            showMessage('success', 'Client deleted successfully!');
+        }
+
+        function resetForm() {
+            editingId = null;
+            document.getElementById('clientForm').reset();
+            document.getElementById('formTitle').textContent = 'Add New Client';
+            document.getElementById('submitBtn').textContent = 'Add Client';
+            document.getElementById('cancelBtn').style.display = 'none';
+        }
+
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            if (!searchTerm) {
+                renderClients();
+                return;
+            }
+
+            const filtered = clients.filter(client =>
+                client.fullName.toLowerCase().includes(searchTerm) ||
+                client.email.toLowerCase().includes(searchTerm) ||
+                client.phone.includes(searchTerm) ||
+                client.serviceType.toLowerCase().includes(searchTerm)
+            );
+
+            renderClients(filtered);
+        }
+
+        function updateStats() {
+            document.getElementById('totalClients').textContent = clients.length;
+            document.getElementById('activeClients').textContent = clients.filter(c => c.status === 'Active').length;
+            document.getElementById('pendingClients').textContent = clients.filter(c => c.status === 'Pending').length;
+            document.getElementById('completedClients').textContent = clients.filter(c => c.status === 'Completed').length;
+        }
+
+        function getStatusColor(status) {
+            const colors = {
+                'Active': '#28a745',
+                'Pending': '#ffc107',
+                'Completed': '#17a2b8',
+                'Inactive': '#6c757d'
+            };
+            return colors[status] || '#6c757d';
+        }
+
+        function showMessage(type, message) {
+            const successEl = document.getElementById('successMessage');
+            const errorEl = document.getElementById('errorMessage');
+
+            if (type === 'success') {
+                successEl.textContent = message;
+                successEl.style.display = 'block';
+                errorEl.style.display = 'none';
+            } else {
+                errorEl.textContent = message;
+                errorEl.style.display = 'block';
+                successEl.style.display = 'none';
+            }
+
+            setTimeout(() => {
+                successEl.style.display = 'none';
+                errorEl.style.display = 'none';
+            }, 3000);
+        }
+
+        function exportToCSV() {
+            if (clients.length === 0) {
+                alert('No data to export!');
+                return;
+            }
+
+            const headers = ['Name', 'Email', 'Phone', 'SSN', 'Address', 'Service Type', 'Status', 'Notes', 'Created Date'];
+            const csvContent = [
+                headers.join(','),
+                ...clients.map(client => [
+                    `"${client.fullName}"`,
+                    `"${client.email}"`,
+                    `"${client.phone}"`,
+                    `"${client.ssn || ''}"`,
+                    `"${(client.address || '').replace(/"/g, '""')}"`,
+                    `"${client.serviceType}"`,
+                    `"${client.status}"`,
+                    `"${(client.notes || '').replace(/"/g, '""')}"`,
+                    `"${new Date(client.createdAt).toLocaleDateString()}"`
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `wetaxfiling_clients_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function clearAllData() {
+            if (!confirm('Are you sure you want to delete ALL client data? This cannot be undone!')) return;
+
+            localStorage.removeItem('wetaxfilingClients');
+            clients = [];
+            renderClients();
+            updateStats();
+            showMessage('success', 'All data cleared successfully!');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mainMenu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>
